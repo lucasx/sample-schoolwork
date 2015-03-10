@@ -1,0 +1,741 @@
+//
+  VOID copy of manager.jade file for manager interface component of Streamdine
+  November 2014
+  Property of Streamdine
+  Created in part by Lucas Sanchez
+  Bootstrap template used and customized
+  This file is written in Jade, which is a template engine for node.js.
+
+extends layout
+
+block breadcrumb
+  li Home
+  li Dashboard
+
+block pageTitle
+  i.fa-fw.fa.fa-home
+  |  #{title}
+
+block navPane
+  ul
+    li.active
+      a(href='/', title='Dashboard')
+        i.fa.fa-lg.fa-fw.fa-home
+        span.menu-item-parent Dashboard
+    li
+      a(href='#')
+        i.fa.fa-fw.fa-bar-chart-o
+        span.menu-item-parent Analytics
+      ul
+        li
+          a(href='/sales') Sales
+        li
+          a(href='#') Kitchen
+        li
+          a(href='#') Employees
+        li
+          a(href='#')
+            span.menu-item-parent Customize
+          ul
+            li
+              a(href='#') View Metrics
+            li
+              a(href='#') Edit Metrics
+        li
+          a(href='#')
+            span.menu-item-parent Export
+            i.fa.fa-lg.fa-fw.fa-download
+    li
+      a(href='#')
+        i.fa.fa-lg.fa-fw.fa-cutlery
+        span.menu-item-parent Menu
+      ul
+        li
+          a(href='#') View Menu
+        li
+          a(href='#') Edit Menu
+        li
+          a(href='#') Gallery
+    li
+      a(href='#')
+        i.fa.fa-lg.fa-fw.fa-user
+        span.menu-item-parent Employees
+    li
+      a(href='#')
+        i.fa.fa-lg.fa-fw.fa-gear
+        span.menu-item-parent Settings
+
+block widgetGrid
+  #orderwarning1
+  #orderwarning2
+  #orderwarning3
+
+  section#widget-grid
+
+  // row
+  .row
+    article.col-sm-12
+
+      // new widget
+      #wid-id-1.jarviswidget(data-widget-togglebutton='false', data-widget-editbutton='false', data-widget-fullscreenbutton='false', data-widget-colorbutton='false', data-widget-deletebutton='false')
+        //
+          widget options:
+          usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+        //
+          data-widget-colorbutton="false"
+          data-widget-editbutton="false"
+          data-widget-togglebutton="false"
+          data-widget-deletebutton="false"
+          data-widget-fullscreenbutton="false"
+          data-widget-custombutton="false"
+          data-widget-collapsed="true"
+          data-widget-sortable="false"
+        header
+          span.widget-icon
+            i.glyphicon.glyphicon-stats.txt-color-darken
+          h2 Overview
+          ul#myTab.nav.nav-tabs.pull-right.in
+            li.active
+              a(data-toggle='tab', href='#s1')
+                i.fa.fa-dollar-o
+                span.hidden-mobile.hidden-tablet Wait Times
+            li
+              a(data-toggle='tab', href='#s2')
+                i.fa.fa-clock-o
+                span.hidden-mobile.hidden-tablet Turnover
+            li
+              a(data-toggle='tab', href='#s3')
+                i.fa.fa-rocket
+                span.hidden-mobile.hidden-tablet Forecast
+        // end header
+        // widget div
+        .no-padding
+          // widget edit box
+          .jarviswidget-editbox
+            | test
+          // end widget edit box
+          .widget-body
+            // content
+            #myTabContent.tab-content
+              #s1.tab-pane.fade.active.in.padding-10.no-padding-bottom
+                .row.no-space
+                  .col-xs-12.col-sm-12.col-md-8.col-lg-8
+
+                    .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                      a#show-shortcut(href='javascript:void(0);', data-action='toggleShortcut')
+                        | Today's average wait times 
+                        i.fa.fa-angle-down
+
+                    .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                      //
+                        span.demo-liveupdate-1
+                          span.onoffswitch-title Live switch
+                          span.onoffswitch
+                            input#start_interval.onoffswitch-checkbox(type='checkbox', name='start_interval')
+                            label.onoffswitch-label(for='start_interval')
+                              span.onoffswitch-inner(data-swchon-text='ON', data-swchoff-text='OFF')
+                              span.onoffswitch-switch
+                    #updating-chart.chart-large.txt-color-blue
+
+                  div.col-xs-12.col-sm-12.col-md-4.col-lg-4.show-stats
+                    div.row
+                      div.col-xs-6.col-sm-6.col-md-12.col-lg-12
+                        span.text
+                          | Sales Goal
+                          span.pull-right $649,000/$900,000
+                        div.progress
+                          div.progress-bar.bg-color-blueDark(style='width: 65%;')
+                      div.col-xs-6.col-sm-6.col-md-12.col-lg-12
+                        span.text
+                          | Total Labor Hours
+                          span.pull-right 440
+                        div.progress
+                          div.progress-bar.bg-color-blue(style='width: 34%;')
+                      div.col-xs-6.col-sm-6.col-md-12.col-lg-12
+                        span.text
+                          | % Repeat Customers
+                          span.pull-right 77%
+                        div.progress
+                          div.progress-bar.bg-color-blue(style='width: 77%;')
+                      span.show-stat-buttons
+                        span.col-xs-12.col-sm-6.col-md-6.col-lg-6
+                          a.btn.btn-default.btn-block.hidden-xs(href='javascript:void(0);') Generate PDF
+                        span.col-xs-12.col-sm-6.col-md-6.col-lg-6
+                          a.btn.btn-default.btn-block.hidden-xs(href='javascript:void(0);') Report a bug
+                  // end .show-stats
+                //end .row.no-space
+                // The 4 Microcharts right underneath the graph
+                div.show-stat-microcharts
+                  div.col-xs-12.col-sm-3.col-md-3.col-lg-3
+                    div.easy-pie-chart.txt-color-orangeDark(data-percent='33', data-pie-size='50')
+                      span.percent.percent-sign 65
+                    span.easy-pie-title
+                      | Dishes sold
+                      i.fa.fa-caret-up.icon-color-good
+                    ul.smaller-stat.hidden-sm.pull-right
+                      li
+                        span.label.bg-color-greenLight
+                          i.fa.fa-caret-up
+                          | 97%
+                      li
+                        span.label.bg-color-blueLight
+                          i.fa.fa-caret-down
+                          | 24%
+                    div.sparkline.txt-color-greenLight.hidden-sm.hidden-md.pull-right(data-sparkline-type='line', data-sparkline-height='33px', data-sparkline-width='70px', data-fill-color='transparent')
+                      | 130, 187, 250, 257, 200, 210, 300, 270, 363, 247, 270, 363, 247
+                  div.col-xs-12.col-sm-3.col-md-3.col-lg-3
+                    div.easy-pie-chart.txt-color-greenLight(data-percent='78.9', data-pie-size='50')
+                      span.percent.percent-sign 78.9 
+                    span.easy-pie-title
+                      | Visits
+                      i.fa.fa-caret-up.icon-color-good
+                    ul.smaller-stat.hidden-sm.pull-right
+                      li
+                        span.label.bg-color-blueDark
+                          i.fa.fa-caret-up
+                          | 94%
+                      li
+                        span.label.bg-color-blue
+                          i.fa.fa-caret-down
+                          | 3%
+                    div.sparkline.txt-color-blue.hidden-sm.hidden-md.pull-right(data-sparkline-type='line', data-sparkline-height='33px', data-sparkline-width='70px', data-fill-color='transparent')
+                      | 257, 200, 210, 300, 270, 363, 130, 187, 250, 247, 270, 363, 247
+                  div.col-xs-12.col-sm-3.col-md-3.col-lg-3
+                    div.easy-pie-chart.txt-color-blue(data-percent='4', data-pie-size='50')
+                      span.percent.percent-sign  4 
+                    span.easy-pie-title
+                      | Losses
+                      i.fa.fa-caret-down.icon-color-good
+                    ul.smaller-stat.hidden-sm.pull-right
+                      li
+                        span.label.bg-color-darken 12
+                      li
+                        span.label.bg-color-blueDark
+                          i.fa.fa-caret-down
+                          | 1%
+                    div.sparkline.txt-color-darken.hidden-sm.hidden-md.pull-right(data-sparkline-type='line', data-sparkline-height='33px', data-sparkline-width='70px', data-fill-color='transparent')
+                      | 200, 210, 363, 247, 300, 270, 130, 187, 250, 257, 363, 247, 270
+                  div.col-xs-12.col-sm-3.col-md-3.col-lg-3
+                    div.easy-pie-chart.txt-color-darken(data-percent='36', data-pie-size='50')
+                      span.percent.percent-sign  36
+                    span.easy-pie-title
+                      | Average Sale
+                      i.fa.fa-caret-up.icon-color-good
+                    ul.smaller-stat.hidden-sm.pull-right
+                      li
+                        span.label.bg-color-red
+                          i.fa.fa-caret-up
+                          | 124
+                      li
+                        span.label.bg-color-blue
+                          i.fa.fa-caret-down
+                          | 20
+                    div.sparkline.txt-color-red.hidden-sm.hidden-md.pull-right(data-sparkline-type='line', data-sparkline-height='33px', data-sparkline-width='70px', data-fill-color='transparent')
+                      | 2700, 3631, 2471, 2700, 3631, 2471, 1300, 1877, 2500, 2577, 2000, 2100, 3000
+
+                // end microcharts
+              // end s1 tab pane
+              #s2.tab-pane.fade
+                .widget-body-toolbar.bg-color-white
+                  form.form-inline(role='form')
+                    .form-group
+                      label.sr-only(for='s123') Show From
+                      input#s123.form-control.input-sm(type='email', placeholder='Show From')
+                    .form-group
+                      input#s124.form-control.input-sm(type='email', placeholder='To')
+                    .btn-group.hidden-phone.pull-right
+                      a.btn.dropdown-toggle.btn-xs.btn-default(data-toggle='dropdown')
+                        i.fa.fa-cog
+                        | More
+                        span.caret  
+                      ul.dropdown-menu.pull-right
+                        li
+                          a(href='javascript:void(0);')
+                            i.fa.fa-file-text-alt
+                            | Export to PDF
+                        li
+                          a(href='javascript:void(0);')
+                            i.fa.fa-question-sign
+                            | Help
+                .padding-10
+                  #statsChart.chart-large.has-legend-unique
+              // end s2 tab pane
+              #s3.tab-pane.fade
+                #rev-toggles.widget-body-toolbar.bg-color-white.smart-form
+                  .inline-group
+                    label.checkbox(for='gra-0')
+                      input#gra-0(type='checkbox', name='gra-0', checked='checked')
+                      i
+                      | Target
+                    label.checkbox(for='gra-1')
+                      input#gra-1(type='checkbox', name='gra-1', checked='checked')
+                      i
+                      | Actual
+                  .btn-group.hidden-phone.pull-right
+                    a.btn.dropdown-toggle.btn-xs.btn-default(data-toggle='dropdown')
+                      i.fa.fa-cog
+                      | More
+                      span.caret  
+                    ul.dropdown-menu.pull-right
+                      li
+                        a(href='javascript:void(0);')
+                          i.fa.fa-file-text-alt
+                          | Export to PDF
+                      li
+                        a(href='javascript:void(0);')
+                          i.fa.fa-question-sign
+                          | Help
+                .padding-10
+                  #flotcontainer.chart-large.has-legend-unique
+              // end s3 tab pane
+            // end content
+        // end widget div
+      // end widget
+    // end article
+  // end row
+  // row
+  div.row
+    article.col-sm-12
+      // new widget
+      div#wid-id-0.jarviswidget(data-widget-togglebutton='false', data-widget-editbutton='false', data-widget-fullscreenbutton='false', data-widget-colorbutton='false', data-widget-deletebutton='false')
+        //
+          widget options:
+          usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+          data-widget-colorbutton="false"
+          data-widget-editbutton="false"
+          data-widget-togglebutton="false"
+          data-widget-deletebutton="false"
+          data-widget-fullscreenbutton="false"
+          data-widget-custombutton="false"
+          data-widget-collapsed="true"
+          data-widget-sortable="false"
+        header
+          span.widget-icon
+            i.glyphicon.glyphicon-stats.txt-color-darken
+          h2 Daily Summary 
+
+        // widget div
+        div.no-padding
+          // widget edit box
+          div.jarviswidget-editbox
+            | test
+          // end widget edit box
+          div.widget-body
+            // content
+            div.row(style='padding-top: 10px;')
+              div.col-xs-12.col-sm-12.col-md-12.col-lg-12
+
+                div.col-xs-12.col-sm-12.col-md-4.col-lg-4(style='text-align: center;')
+                  div#pie-chart1.chart
+                  | Top 10 Dishes
+                div.col-xs-12.col-sm-12.col-md-4.col-lg-4(style='text-align: center;')
+                  div#pie-chart2.chart
+                  | Revenue per meal
+                div.col-xs-12.col-sm-12.col-md-4.col-lg-4(style='text-align: center;')
+                  div#pie-chart3.chart
+                  | Employee Tips
+
+            // end content
+        // end widget div
+      // end widget
+    // end article
+  // end row
+block mainJavascript
+  script(type='text/javascript').
+    $(document).ready(function() {
+      // DO NOT REMOVE : GLOBAL FUNCTIONS!
+      pageSetUp();
+      /*
+      * PAGE RELATED SCRIPTS
+      */
+      $(".js-status-update a").click(function() {
+        var selText = $(this).text();
+        var $this = $(this);
+        $this.parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+        $this.parents('.dropdown-menu').find('li').removeClass('active');
+        $this.parent().addClass('active');
+      });
+      //"Table 10 has been waiting..." notification appears after 30 seconds
+      setTimeout(function() {
+        $("div#orderwarning1").html('<div class="alert alert-info fade in"><button class="close" data-dismiss="alert"> <img src="img/clear.png" alt="x"> </button><i class="fa-fw fa fa-info"></i>Table 10 has been waiting 30 minutes for their order.</div>');
+        //$("div#orderwarning1").html('<img src='img/clear.png' alt='x'>');
+      }, 10000);
+      setTimeout(function() {
+        $("div#orderwarning2").html('<div class="alert alert-info fade in"><button class="close" data-dismiss="alert"> <img src="img/clear.png" alt="x"> </button><i class="fa-fw fa fa-info"></i>Waitress requested you at Table 7.</div>');
+        //$("div#orderwarning2").html('<img src='img/clear.png' alt='x'>');
+      }, 15000);
+      setTimeout(function() {
+        $("div#orderwarning3").html('<div class="alert alert-info fade in"><button class="close" data-dismiss="alert"> <img src="img/clear.png" alt="x"> </button><i class="fa-fw fa fa-info"></i>Table 4 has been waiting 90 minutes for their entrees.</div>');
+        //$("div#orderwarning3").html('<img src='img/clear.png' alt='x'>');
+      }, 20000);
+      /*
+      * TODO: add a way to add more todo's to list
+      */
+      // initialize sortable
+      $(function() {
+        $("#sortable1, #sortable2").sortable({
+          handle : '.handle',
+          connectWith : ".todo",
+          update : countTasks
+        }).disableSelection();
+      });
+      // check and uncheck
+      $('.todo .checkbox > input[type="checkbox"]').click(function() {
+        var $this = $(this).parent().parent().parent();
+        if ($(this).prop('checked')) {
+          $this.addClass("complete");
+          // remove this if you want to undo a check list once checked
+          //$(this).attr("disabled", true);
+          $(this).parent().hide();
+              
+            // once clicked - add class, copy to memory then remove and add to sortable3
+          $this.slideUp(500, function() {
+            $this.clone().prependTo("#sortable3").effect("highlight", {}, 800);
+            $this.remove();
+            countTasks();
+          });
+        } else {
+          // insert undo code here...
+        }
+      })
+      // count tasks
+      function countTasks() {
+        $('.todo-group-title').each(function() {
+          var $this = $(this);
+          $this.find(".num-of-tasks").text($this.next().find("li").size());
+        });
+      }
+      /*
+      * RUN PAGE GRAPHS
+      */
+      /* TAB 1: UPDATING CHART */
+      // For the demo we use generated data, but normally it would be coming from the server
+      var data = [], res = [], totalPoints = 90, $UpdatingChartColors = $("#updating-chart").css('color');
+      var counter = 0;
+      var today = new Date()
+      var today6p = new Date(today.toDateString());
+      today6p.setHours(18);
+      today6p.setMinutes(0);
+      var today9p = new Date(today.toDateString());
+      today9p.setHours(21);
+      today9p.setMinutes(0);
+      today6p = today6p.getTime();
+      today9p = today9p.getTime();
+      orderTimes = [];
+      timeInterval = today9p - today6p;
+      for(var i = 0; i<totalPoints; i++) {
+        oTime = i * timeInterval / totalPoints;
+        orderTimes.push(today6p + oTime);
+      }
+      function addRandomData() {
+        if(counter > totalPoints) return res;
+        var prev = counter > 0 ? data[counter-1] : 15;
+        var y = prev + (Math.random() * 10 - 5)/5;
+        if (y < 7)
+          y = 7;
+        if (y > 30)
+          y = 30;
+        data.push(y);
+        res.push([ orderTimes[counter], data[counter] ]);
+        counter++;
+        return res;
+        /*
+        if (data.length > 0)
+        data = data.slice(1);
+        // do a random walk
+        while (data.length < totalPoints) {
+          var prev = data.length > 0 ? data[data.length - 1] : 15;
+          var y = prev + (Math.random() * 10 - 5);
+          if (y < 7)
+            y = 7;
+          if (y > 30)
+            y = 30;
+          data.push(y);
+        }
+        // zip the generated y values with the x values
+        var res = [];
+        for (var i = 0; i < data.length; ++i)
+          res.push([i, data[i]])
+        return res;
+        */
+      }
+      // setup control widget
+      var updateInterval = 1500;
+      $("#updating-chart").val(updateInterval).change(function() {
+        var v = $(this).val();
+        if (v && !isNaN(+v)) {
+          updateInterval = +v;
+          $(this).val("" + updateInterval);
+        }
+      });
+      // setup plot
+      var options = {
+        yaxis : {
+          min : 0,
+          max : 30
+        },
+        xaxis : {
+          mode: "time",
+          minTickSize: [15, "minute"],
+          min: today6p,
+          max: today9p
+        },
+        colors : [$UpdatingChartColors],
+        series : {
+          lines : {
+            lineWidth : 1,
+            fill : true,
+            fillColor : {
+              colors : [{
+                opacity : 0.4
+              }, {
+                opacity : 0
+              }]
+            },
+            steps : false
+          }
+        }
+      };
+      for(var i = 0; i<35; i++) {
+        addRandomData();
+      }
+      var plot = $.plot($("#updating-chart"), [addRandomData()], options);
+      /* live switch */
+      $('input[type="checkbox"]#start_interval').click(function() {
+        if ($(this).prop('checked')) {
+          $on = true;
+          updateInterval = 5000;
+          update();
+        } else {
+          clearInterval(updateInterval);
+          $on = false;
+        }
+      });
+      
+      var $on = true;
+      updateInterval = 5000;
+      update();
+      function update() {
+        if ($on == true) {
+          plot.setData([addRandomData()]);
+          plot.draw();
+          setTimeout(update, updateInterval);
+        } else {
+          clearInterval(updateInterval)
+        }
+      }
+        /*end updating chart*/
+        /* Pie charts */
+      var PIE_N_SLICES = [10, 4, 9];
+      var pieSliceLabels = [
+        [
+        "Spare Rib",
+        "Chicken Stir Fry",
+        "Lasagna",
+        "Cheese Pizza",
+        "Chocolate Lava Cake",
+        "Spaghetti + Meatballs",
+        "Salmon",
+        "Scallops",
+        "Mozarella Sticks",
+        "Roast lamb"
+        ],[
+        "12:00pm - 1:15pm",
+        "1:15pm - 5:00pm",
+        "5:00pm - 8:00pm",
+        "8:00pm - 10:00pm"
+        ],[
+        "Michelle",
+        "Jennifer",
+        "Chris",
+        "Ilya",
+        "Morgan",
+        "Kirsten",
+        "Louis",
+        "Lucas",
+        "Maggie",
+        ]
+      ];
+      for (var j = 0; j < 3; j++) {
+        var chartID = "#pie-chart" + (j+1);
+        if ($(chartID).length) {
+          var data_pie = [];
+          var series = pieSliceLabels[j].length;
+          for (var i = 0; i < series; i++) {
+            data_pie[i] = {
+                label: pieSliceLabels[j][i],
+                data: Math.floor(Math.random() * 100) + 1
+            }
+          }
+          $.plot(chartID, data_pie, {
+            series: {
+              pie: {
+                show: true,
+                innerRadius: 0.5,
+                radius: 1,
+                label: {
+                  show: false,
+                  radius: 2 / 3,
+                  formatter: function (label, series) {
+                    return '<div style="font-size:11px;text-align:center;padding:4px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                  },
+                  threshold: 0.1
+                }
+              }
+            },
+            legend: {
+              show: true,
+              noColumns: 1, // number of columns in legend table
+              labelFormatter: null, // fn: string -> string
+              labelBoxBorderColor: "#000", // border color for the little label boxes
+              container: null, // container (as jQuery object) to put legend in, null means default on top of graph
+              position: "ne", // position of default legend container within plot
+              margin: [5, 10], // distance from grid edge to default legend container within plot
+              backgroundColor: "#efefef", // null means auto-detect
+              backgroundOpacity: 0 // set to 0 to avoid background
+            },
+            grid: {
+              hoverable: true,
+              clickable: true
+            },
+          });
+        }
+      }
+      /* End pie charts */
+        /* TAB 2: Social Network  */
+        $(function() {
+            // jQuery Flot Chart
+            var twitter = [[1, 27], [2, 34], [3, 51], [4, 48], [5, 55], [6, 65], [7, 61], [8, 70], [9, 65], [10, 75], [11, 57], [12, 59], [13, 62]], facebook = [[1, 25], [2, 31], [3, 45], [4, 37], [5, 38], [6, 40], [7, 47], [8, 55], [9, 43], [10, 50], [11, 47], [12, 39], [13, 47]], data = [{
+                label : "Twitter",
+                data : twitter,
+                lines : {
+                    show : true,
+                    lineWidth : 1,
+                    fill : true,
+                    fillColor : {
+                        colors : [{
+                            opacity : 0.1
+                        }, {
+                            opacity : 0.13
+                        }]
+                    }
+                },
+                points : {
+                    show : true
+                }
+            }, {
+                label : "Facebook",
+                data : facebook,
+                lines : {
+                    show : true,
+                    lineWidth : 1,
+                    fill : true,
+                    fillColor : {
+                        colors : [{
+                            opacity : 0.1
+                        }, {
+                            opacity : 0.13
+                        }]
+                    }
+                },
+                points : {
+                    show : true
+                }
+            }];
+            var options = {
+                grid : {
+                    hoverable : true
+                },
+                colors : ["#568A89", "#3276B1"],
+                tooltip : true,
+                tooltipOpts : {
+                    //content : "Value <b>$x</b> Value <span>$y</span>",
+                    defaultTheme : false
+                },
+                xaxis : {
+                    ticks : [[1, "JAN"], [2, "FEB"], [3, "MAR"], [4, "APR"], [5, "MAY"], [6, "JUN"], [7, "JUL"], [8, "AUG"], [9, "SEP"], [10, "OCT"], [11, "NOV"], [12, "DEC"], [13, "JAN+1"]]
+                },
+                yaxes : {
+                }
+            };
+            var plot3 = $.plot($("#statsChart"), data, options);
+        });
+        // END TAB 2
+        // TAB THREE GRAPH //
+        /* TAB 3: Revenew  */
+        $(function() {
+            var trgt = [[1354586000000, 153], [1364587000000, 658], [1374588000000, 198], [1384589000000, 663], [1394590000000, 801], [1404591000000, 1080], [1414592000000, 353], [1424593000000, 749], [1434594000000, 523], [1444595000000, 258], [1454596000000, 688], [1464597000000, 364]], prft = [[1354586000000, 53], [1364587000000, 65], [1374588000000, 98], [1384589000000, 83], [1394590000000, 980], [1404591000000, 808], [1414592000000, 720], [1424593000000, 674], [1434594000000, 23], [1444595000000, 79], [1454596000000, 88], [1464597000000, 36]], sgnups = [[1354586000000, 647], [1364587000000, 435], [1374588000000, 784], [1384589000000, 346], [1394590000000, 487], [1404591000000, 463], [1414592000000, 479], [1424593000000, 236], [1434594000000, 843], [1444595000000, 657], [1454596000000, 241], [1464597000000, 341]], toggles = $("#rev-toggles"), target = $("#flotcontainer");
+            var data = [{
+                label : "Target Profit",
+                data : trgt,
+                bars : {
+                    show : true,
+                    align : "center",
+                    barWidth : 30 * 30 * 60 * 1000 * 80
+                }
+            }, {
+                label : "Actual Profit",
+                data : prft,
+                color : '#3276B1',
+                lines : {
+                    show : true,
+                    lineWidth : 3
+                },
+                points : {
+                    show : true
+                }
+            }, {
+                label : "Actual Signups",
+                data : sgnups,
+                color : '#71843F',
+                lines : {
+                    show : true,
+                    lineWidth : 1
+                },
+                points : {
+                    show : true
+                }
+            }]
+            var options = {
+                grid : {
+                    hoverable : true
+                },
+                tooltip : true,
+                tooltipOpts : {
+                    //content: '%x - %y',
+                    //dateFormat: '%b %y',
+                    defaultTheme : false
+                },
+                xaxis : {
+                    mode : "time"
+                },
+                yaxes : {
+                    tickFormatter : function(val, axis) {
+                        return "$" + val;
+                    },
+                    max : 1200
+                }
+            };
+            plot2 = null;
+            function plotNow() {
+                var d = [];
+                toggles.find(':checkbox').each(function() {
+                    if ($(this).is(':checked')) {
+                        d.push(data[$(this).attr("name").substr(4, 1)]);
+                    }
+                });
+                if (d.length > 0) {
+                    if (plot2) {
+                        plot2.setData(d);
+                        plot2.draw();
+                    } else {
+                        plot2 = $.plot(target, d, options);
+                    }
+                }
+            };
+            toggles.find(':checkbox').on('change', function() {
+                plotNow();
+            });
+            plotNow()
+      });
+    });
